@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+
+    
+
+</head>
+<body>
+    <div class="container w-75 mt-5">
+        <table class="table text-center border table-striped">
+            <thead>
+                <tr>
+                    <th colspan="3" class="text-danger">DANH SACH SINH VIEN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <th>MSSV</th>
+                    <th>Tên</th>
+                    <th>Lớp</th>
+                </tr>
+                <tr>
+                    <td><span id="mssv"></span></td>
+                    <td><span id="ten"></span></td>
+                    <td><span id="lop"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var maso = prompt("Nhập mã số sinh viên: ");
+        var ten = prompt("Nhập tên sinh viên: ");
+        var lop = prompt("Nhập lớp sinh viên: ");
+
+        document.getElementById("mssv").textContent = maso;
+        document.getElementById("ten").textContent = ten;
+        document.getElementById("lop").textContent = lop;
+        
+    </script>
+</body>
+</html>

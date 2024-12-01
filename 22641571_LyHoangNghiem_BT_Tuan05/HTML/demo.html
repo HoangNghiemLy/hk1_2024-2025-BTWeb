@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px auto;
+            }
+            .wrapper{
+                width: 960px;
+                background-color: aliceblue;
+            }
+            header{
+                width: 960px;
+                height: 150px;
+            }
+            .content{
+                height: 400px;
+                width: 100%;
+            }
+            .cls1{
+                clear: both;
+            }
+            aside{
+                width: 460px;
+                height: 100%;
+                float: left;
+                background-color: antiquewhite;
+            }
+            section{
+                width: 500px;
+                height: 100%;
+                float: left;
+                background-color: rgb(182,160,131);
+            }
+            .content aside img{
+                margin: 4px;
+            }
+            #frm1{
+                
+                height: 220px;
+                width: 98%;
+                border-radius: 10px;
+                border: 1px solid red;
+            }
+            .lbl1{
+                margin-top: 5px;
+                float: left;
+                margin-left:20px ;
+            }
+            .inp{
+                margin-top: 5px;
+                margin-left: 20px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+
+            </header>
+            <div class="cls1"></div>
+            <div class="content">
+                <aside>
+                    <h3>Information System</h3>
+                    <img src="../IMG/anh1.webp" alt="" width="450" height="150">
+                    <form action="" id="frm1">
+                        <div class="lbl1">
+                            <label for="">Ma sinh vien</label> <br> <br>
+                            <label for="">Ho ten</label><br> <br>
+                            <label for="">Ngay sinh</label><br> <br>
+                            <label for="">Que quan</label><br><br>
+                            <label for="">Gioi tinh</label>
+                        </div>
+                        <div class="inp">
+                            <input type="text" name="txtMa" id="txtMa"> <br> <br>
+                            <input type="text" name="txtHT" id="txtHT"><br> <br>
+                            <input type="date" name="txtdate" id="txtdate"><br> <br>
+                            <select name="" id="">
+                                <option value="1">Ha Noi</option>
+                                <option value="2">Hai Phong</option>
+                                <option value="3">Da Nang</option>
+                                <option value="4">TP.HCM</option>
+                            </select><br> <br>
+                            <input type="radio" name="gt" id="nam" value="Nam">Nam
+                            <input type="radio" name="gt" id="nu" value="Nu">Nu
+                        </div>
+                        
+                    </form>
+                </aside>
+                <section>
+
+                </section>
+            </div>
+            <div class="cls1"></div>
+            <footer>
+
+            </footer>
+        </div>
+    </body>
+</html>

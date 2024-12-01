@@ -1,0 +1,150 @@
+body {
+    background-image: url(../img/background.jpg);
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+section article:first-child img {
+    float: right;
+    margin-top: 20px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+aside li {
+    margin-bottom: 20px;
+}
+
+aside {
+    height: 30%;
+    box-shadow: 15px 15px 7px 0px rgba(237, 195, 8, 0.704);
+    border-radius: 10px;
+}
+
+aside li a {
+    font-size: 1.3rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    color: #fff;
+}
+
+/* Navbar */
+main {
+    display: flex;
+}
+
+main aside {
+    width: 10%;
+    /* heiht: 150px; */
+    background-color: #fff;
+    margin-right: 25px;
+}
+
+main section {
+    width: 100%;
+    border-left: 3px solid green;
+    padding-left: 25px;
+}
+
+
+
+main aside nav {
+    padding: 10px;
+}
+/* Navbar */
+
+/* index */
+.img.index {  
+    /* text-align: center;
+     */
+
+    margin-top: 50px;
+}
+
+.index {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* index */
+section article:not(section article:last-child) {
+    margin-bottom: 30px;
+}
+section article p {
+    margin: 15px 0px;
+    font-size: 2rem;
+}
+
+section article h1 {
+    color: #fff;
+    font-size: 4.5rem;
+    letter-spacing: 30px;
+    background-color: green;
+    padding-left: 90px;
+    font-style: italic;
+    width: 90%;
+}
+
+section article h2 {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 3rem;
+    background-color: green;
+    padding-left: 20px;
+    font-style: italic;
+    width: 90%;
+}
+
+section article li {
+    color: #fff;
+    font-size: 2rem;
+}
+
+section article ul {
+    padding-left: 60px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3px;
+    border-top: 2px solid green;
+    padding: 20px 0px;
+}
+
+footer span {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.sep {
+    background-color: green;
+    height: 3px;
+    width: 100%;
+}
+
+
+
+

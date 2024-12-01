@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+   
+</head>
+<body>
+    <div class="container d-flex justify-content-center mt-5">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr class="fw-bold">
+            <td>Họ và Tên</td>
+            <td><input type="text" class="form-control" id="inputHoTen"></td>
+        </tr>
+        <tr>
+          <td class="fw-bold">Chọn:</td>
+          <td>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="colorChange" id="backgroundChange" value="background"/>
+              <label class="form-check-label" for="backgroundChange">Background</label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="colorChange" id="fontChange" value="font"/>
+              <label class="form-check-label" for="fontChange">Font</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="fw-bold">Chọn màu</td>
+          <td>
+            <select id="colorSelector" class="form-select">
+              <option value="Red">Đỏ</option>
+              <option value="Yellow">Vàng</option>
+              <option value="Green">Xanh lá</option>
+              <option value="Blue">Xanh dương</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center" id="doiMauBtn"><button class="btn btn-primary">ĐỔI MÀU</button></td>
+        </tr>
+      </table>
+      <p class="text-center lead fw-bold mt-5" id="font">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eaque quam quaerat
+        itaque molestiae hic iusto maiores recusandae perspiciatis, quae dolorum autem error a sit? Rem odio quidem fuga
+        fugiat culpa repellendus necessitatibus quasi cum ex quae quibusdam quos numquam laborum pariatur excepturi
+        voluptatibus sed, id voluptates quas! Officia, quo?</p>
+    </div>
+  </div>
+  <script>
+    document.getElementById("doiMauBtn").addEventListener("click", function() {
+    var type = document.querySelector("input[name='colorChange']:checked").value;
+
+    if (type == undefined) {
+        alert("Vui lòng chọn đối tượng cần đổi màu");
+        return
+    }
+
+    var color = document.getElementById("colorSelector").value
+    if (type == "background") {
+        document.body.style.backgroundColor = color;
+    } else {
+        document.getElementById("font").style.color = color;
+    }
+
+
+    })
+</script>
+</body>
+</html>

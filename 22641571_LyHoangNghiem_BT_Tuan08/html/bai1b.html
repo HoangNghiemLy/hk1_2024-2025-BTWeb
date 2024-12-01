@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <style>
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            background-color: #3A5795;
+            color: white;
+        }
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            background-color: #E6E6FA;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            function ktraHo(){
+                let v_ho = document.getElementById
+                ('txtHo').value;
+                let regHo = /^[A-Z][a-z]+$/
+                if(v_ho == '' || v_ho == null){
+                    errHo.innerHTML = 'Yêu cầu nhập họ';
+                    return false;
+                }else if(!v_ho.match(regHo)){
+                    errHo.innerHTML = 'Họ không hợp lệ';
+                    return false;
+                }else{
+                    errHo.innerHTML = '';
+                    return true;
+                }   
+
+            }
+            $('#txtHo').blur(function(){
+                ktraHo();
+            });
+
+            function ktraTen(){
+                let v_ten = document.getElementById
+                ('txtTen').value;
+                let regTen = /^[A-Z][a-z]+$/
+                if(v_ten == '' || v_ten == null){
+                    errTen.innerHTML = 'Yêu cầu nhập tên';
+                    return false;
+                }else if(!v_ten.match(regTen)){
+                    errTen.innerHTML = 'Tên không hợp lệ';
+                    return false;
+                }else{
+                    errTen.innerHTML = '';
+                    return true;
+                }
+            }
+            $('#txtTen').blur(function(){
+                ktraTen();
+            });
+
+            function ktraEmail(){
+                let v_email = document.getElementById
+                ('txtEmail').value;
+                let regEmail = /^[^\s.]+(@gmail.com)$/
+                if(v_email == '' || v_email == null){
+                    errEmail.innerHTML = 'Yêu cầu nhập email';
+                    return false;
+                }else if(!v_email.match(regEmail)){
+                    errEmail.innerHTML = 'Email không hợp lệ';
+                    return false;
+                }else{
+                    errEmail.innerHTML = '';
+                    return true;
+                }
+            }
+            $('#txtEmail').blur(function(){
+                ktraEmail();
+            });
+
+            function ktraNLEmail(){
+                let v_email = document.getElementById
+                ('txtEmail').value;
+                let v_nlemail = document.getElementById
+                ('txtNLEmail').value;
+                if(v_nlemail == '' || v_nlemail == null){
+                    errNLEmail.innerHTML = 'Yêu cầu nhập lại email';
+                    return false;
+                }else if(v_email != v_nlemail){
+                    errNLEmail.innerHTML = 'Email không trùng khớp';
+                    return false;
+                }else{
+                    errNLEmail.innerHTML = '';
+                    return true;
+                }
+            }
+            $('#txtNLEmail').blur(function(){
+                ktraNLEmail();
+            });
+
+            function ktraMK(){
+                let v_mk = document.getElementById
+                ('txtMK').value;
+                if(v_mk == '' || v_mk == null){
+                    errMK.innerHTML = 'Yêu cầu nhập mật khẩu';
+                    return false;
+                }else if(v_mk.length < 6){
+                    errMK.innerHTML = 'Mật khẩu phải lớn hơn 6 ký tự';
+                    return false;
+                }else{
+                    errMK.innerHTML = '';
+                    return true;
+                }
+            }
+            $('#txtMK').blur(function(){
+                ktraMK();
+            });
+
+            function ktraNS(){
+                let v_ns = new Date($("#txtNS").val()).getFullYear();
+                let tuoi = new Date().getFullYear() - v_ns;
+                if(isNaN(v_ns)){
+                    errNS.innerHTML = 'Yêu cầu nhập năm sinh';
+                    return false;
+                }
+                else if(tuoi < 18){
+                    errNS.innerHTML = 'Tuổi phải lớn hơn 18';
+                    return false;
+                }else{
+                    errNS.innerHTML = '';
+                    return true;
+                }
+
+            }
+            $('#txtNS').blur(function(){
+                ktraNS();
+            });
+
+
+        })
+    </script>
+</head>
+<body>
+    <div class="container ">
+        <nav class="container-fluid ">
+            <div class="col-4">
+                <img src="../image/face.png" width="50%" height="30px" alt="">
+            </div>
+            <div class="col-3">
+                <label for="">Email hoặc điện thoại</label>
+                <br>
+                <input  class="w-75"  type="text" name="" id="">
+                <br>
+                <input c type="checkbox" name="" id=""> <span>
+                    <label for="">Ghi nhớ tài khoản</label>
+                </span>
+                
+            </div>
+            <div class="col-3">
+                <label for="">Mật khẩu</label>
+                <br>
+                <input class="w-75" type="password" name="" id="">
+                <br>
+                <a href="" class="text-white">Quên mật khẩu?</a>
+            </div>
+            <div class="col-2">
+             <button class="btn btn-primary">Đăng nhập</button>                   
+
+            </div>
+        </nav>
+        <section>
+            <div class="col">
+                
+                <img src="../image/facebook.jpg" width="80%" height="300px" alt="">
+                <h2 class="mt-4 text-primary">Cảm ơn bạn đã ghé thăm!</h2>
+            </div>
+            <div class="col">
+                <form class="form w-75">
+                    <div class="row my-3">
+                        <div class="col p-0">
+                            <input class="form-control" id="txtHo"  placeholder="Họ" type="text" name="">
+                            
+                            <span id="errHo" style="color: red;"></span>
+                        </div>
+                        <div class="col p-0">
+                            <input class="form-control" id="txtTen"  placeholder="Tên" type="text" name="">
+                            <span id="errTen" style="color: red;"></span>
+                        </div>
+                    
+                    </div>
+                    <div class="row my-3">
+                        <input class="form-control" placeholder="Email đăng nhập" type="email" name="" id="txtEmail">
+                        <span id="errEmail" style="color: red;"></span>
+                    </div>
+                    <div class="row my-3">
+                        <input class="form-control"  placeholder="Nhập lại email" type="email" name="" id="txtNLEmail">
+                        <span id="errNLEmail" style="color: red;"></span>
+                    </div>
+                    <div class="row my-3">
+                        <input class="form-control"  placeholder="Mật khẩu" type="password" name="" id="txtMK">
+                        <span id="errMK" style="color: red;"></span>
+                    </div>
+                    <div class="row my-3">
+                        <input class="form-control"  placeholder="Năm sinh" type="date" name="" id="txtNS">
+                        <span id="errNS" style="color: red;"></span>
+                    </div>
+                    <div class="row my-3">
+                        <input type="button" class="btn btn-success w-50" name="" id="" value="Đăng ký">
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <title>Document</title>
+
+    <style>
+
+    h1{
+        font-size: 20px;
+        color: pink;
+        text-align: center;
+    }
+
+
+    </style>
+    
+</head>
+<body>
+    <div class="container m-auto  w-50">
+        <table class="container m-auto table-bordered">
+            <tr>
+                <td colspan="3">
+                    <h1>Thông tin đăng ký</h1>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Tài Khoản</label></td>
+                <td><input type="text" id="inputHoTen1"></td>
+            </tr>
+            <tr>
+                <td><label for="">Mật Khẩu</label></td>
+                <td><input type="text" id="inputMatKhau1"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td onclick="dangky()"><button class="btn btn-warning">Đăng kí</button></td>
+            </tr>
+        </table>
+
+        <table class="container m-auto mt-5 table-bordered">
+            <tr>
+                <td colspan="3">
+                    <h1>Thông tin đăng nhập</h1>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Tài Khoản</label></td>
+                <td><input class="" type="text" id="inputHoTen2"></td>
+            </tr>
+            <tr>
+                <td><label for="">Mật Khẩu</label></td>
+                <td><input type="text" id="inputMatKhau2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td onclick="dangnhap()"><button class="btn btn-danger">Đăng nhập</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var taikhoanGlobal = null;
+        var matkhauGlobal = null;
+
+        function dangky() {
+            var taikhoan = document.getElementById("inputHoTen1").value;
+            var matkhau = document.getElementById("inputMatKhau1").value;
+
+            taikhoanGlobal = taikhoan;
+            matkhauGlobal = matkhau;
+
+            alert("Đăng ký thành công");
+            console.log(taikhoan);
+            console.log(matkhau);
+        }
+
+        function dangnhap() {
+            var taikhoanInput = document.getElementById("inputHoTen2").value;
+            var matkhauInput = document.getElementById("inputMatKhau2").value;
+
+            if (taikhoanInput === taikhoanGlobal && matkhauInput === matkhauGlobal) {
+                alert("Đăng nhập thành công");
+            } else {
+                alert("Đăng nhập thất bại");
+            }
+        }
+    </script>
+</body>
+</html>

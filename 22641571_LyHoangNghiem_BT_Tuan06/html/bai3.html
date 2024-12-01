@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function Play(){
+                let arr = new Array();
+                arr[0] = "../image/1.jpg";
+                arr[1] = "../image/2.jpg";
+                arr[2] = "../image/3.jpg";
+                arr[3] = "../image/4.jpg";
+                let i = Math.round(Math.random()*3);
+                $('#idhinh').attr('src', arr[i]);
+                intervalId= setTimeout(Play, 1000);
+            }
+        
+        $('#btnplay').click(function(){
+            Play();
+        });
+
+        $('#btnStop').click(function(){
+            clearTimeout(intervalId);
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="../image/5.jpg"  width="80%" height="500px" alt="" id="idhinh" >
+        <br>
+        
+        <button value="Play" class="btn btn-primary mt-4" id="btnplay" onclick="Play()">Play</button>
+        <button value="Stop" class="btn btn-danger mt-4" id="btnStop">Stop</button>
+    </div>
+</body>
+</html>

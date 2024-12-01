@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+
+            function kiemtraHT(){
+                let ht = document.getElementById('txtHT').value;
+                let reght = /^[A-Z][a-z]+([\s][A-Z][a-z]+)+$/
+                if(ht == "" || ht == null){
+                    errHT.innerHTML = "Họ tên không được để trống";
+                    return false;
+                }else if(!reght.test(ht)){
+                    errHT.innerHTML = "Họ tên không hợp lệ";
+                    return false;
+                }else{
+                    errHT.innerHTML = "";
+                    return true;
+                }
+                    
+            }
+            $('#txtHT').blur(function(){
+                kiemtraHT();
+            })
+
+            function kiemtraSDT(){
+                let sdt = document.getElementById('txtSDT').value;
+                let regSDT = /^[0][1-9]{2}[-][0-9]{6}$/
+
+                if(sdt == "" || sdt == null){
+                    errSDT.innerHTML = "Số điện thoại không được để trống";
+                    return false;
+                }else if(!regSDT.test(sdt)){
+                    errSDT.innerHTML = "Số điện thoại không hợp lệ";
+                    return false;
+                }else{
+                    errSDT.innerHTML = "";
+                    return true;
+                }
+
+            }
+            $('#txtSDT').blur(function(){
+                kiemtraSDT();
+            })
+
+            function kiemtraNS(){
+                let ns = new Date($('#txtNS').val()).getFullYear();
+                let now = new Date().getFullYear() - ns;
+
+                if(isNaN(ns)){
+                    errNS.innerHTML = "Ngày sinh không được để trống";
+                    return false;
+                }else if(now < 15 || now > 18){
+                    errNS.innerHTML = "Tuổi phải lớn hơn 18";
+                    return false;
+                }else{
+                    errNS.innerHTML = "";
+                    return true;
+                }
+            }
+            $('#txtNS').blur(function(){
+                kiemtraNS();
+            })
+
+            // $("#txtK").on("change",function(){
+            //     let k = $("#txtK").val();
+            //     if(k == "Khóa 2 tuần"){
+            //         $("#txtHP").val("2.000.000");
+            //     }else if(k == "Khóa 4 tuần"){
+            //         $("#txtHP").val("4.000.000");
+            //     }else{
+            //         $("#txtHP").val("6.000.000");
+            //     }
+            // })
+
+            $("#txtK").on("change", function(){
+                let k = $("#txtK").val();
+                let hp = $("#txtHP");
+                if(k == "Khóa 2 tuần"){
+                    hp.val("2.000.000");
+                }else if(k == "Khóa 4 tuần"){
+                    hp.val("4.000.000");
+                }else{
+                    hp.val("6.000.000");
+                }
+            })
+
+            function kiemtraDC(){
+                let dc = document.getElementById('txtDC').value;
+                if(dc == "" || dc == null){
+                    errDC.innerHTML = "Địa chỉ không được để trống";
+                    return false;
+                }else{
+                    errDC.innerHTML = "";
+                    return true;
+                }
+            }
+            $('#txtDC').blur(function(){
+                kiemtraDC();
+            })
+
+            function kiemtraA(){
+                let a = document.getElementById('txtA').value;
+                let reg = /^.+\.(jpg|png|gif)$/;
+                if(a == "" || a == null){
+                    errA.innerHTML = "Ảnh không được để trống";
+                    return false;
+                }else{
+                    errA.innerHTML = "";
+                    return true;
+                }
+            }
+            $('#txtA').blur(function(){
+                kiemtraA();
+            })
+
+            $("#dangki").click(function(){
+                if(kiemtraHT() && kiemtraSDT() && kiemtraNS() && kiemtraDC() && kiemtraA()){
+                    let ht = $("#txtHT").val();
+                    let sdt = $("#txtSDT").val();
+                    let ns = $("#txtNS").val();
+                    let dc = $("#txtDC").val();
+                    let k = $("#txtK option:selected").text();
+                    let hp = $("#txtHP").val();
+                    
+                    let tdNew = 
+                        "<tr><td>" + ht +
+                        "</td><td>" + ht +
+                        "</td><td>" + sdt +
+                        "</td><td>" + ns +
+                        "</td><td>" + dc +
+                        "</td><td>" + k +
+                        "</td><td>" + hp +
+                        "</tr>";
+
+                    $("#tableds").append(tdNew);
+
+                }
+            
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+    <div class="container m-auto ">
+        <img src="../image/website.png" width="100%" height="200px" style="object-fit: cover;"  alt="">
+        <nav class="navbar navbar-expand-md navbar-light bg-light " >
+            <div class="container">
+                
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="#" aria-current="page"
+                                >Trang chủ
+                               </a>
+                        </li>
+                        
+                        <button type="button" class="btn text-primary" data-bs-toggle="modal" data-bs-target="#modalId">
+                            Đăng ký
+                        </button>
+                        
+                        
+                    </ul>
+                    
+                </div>
+            </div>
+            <!-- Modal trigger button -->
+            
+            
+            <!-- Modal Body -->
+            <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+            <div
+                class="modal fade"
+                id="modalId"
+                tabindex="-1"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                
+                role="dialog"
+                aria-labelledby="modalTitleId"
+                aria-hidden="true"
+            >
+                <div
+                    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                    role="document"
+                >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitleId">
+                                THÔNG TIN HỌC VIÊN
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <form action="">
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Họ và Tên</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" class="w-100"  name="" id="txtHT">
+                                    
+                                            <span id="errHT" style="color: red;">*</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Số điện thoại</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input class="form-control" type="tel" class="w-100"  name="" id="txtSDT">
+                                    
+                                            <span id="errSDT" style="color: red;">*</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Ngày sinh</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input class="form-control" type="date" class="w-100"  name="" id="txtNS">
+                                    
+                                            <span id="errNS" style="color: red;">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Địa chỉ</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" class="w-100"  name="" id="txtDC">
+                                    
+                                            <span id="errDC" style="color: red;">*</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Bạn muốn tham gia khóa nào</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select class="form-select" name="" id="txtK">
+                                                <option value="Khóa 2 tuần">Khóa 2 tuần</option>
+                                                <option value="Khóa 4 tuần">Khóa 4 tuần</option>
+                                                <option value="Khóa 6 tuần">Khóa 6 tuần</option>
+                                            </select>
+                                    
+                                            <span id="txtK" style="color: red;">*</span>                                          
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Học phí</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" class="w-100 disabled"  name="" id="txtHP" disabled>
+                                    
+                                            <span style="color: red;">*</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label for="">Ảnh đại diện</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" class="w-100"  name="" id="txtA">
+                                            
+                                            <span id="errA" style="color: red;">*</span>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary" id="dangki">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+
+            
+        </nav>
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ và Tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày sinh</th>
+                        <th>Địa chỉ</th>
+                        <th>Khóa học</th>
+                        <th>Học phí</th>
+                    </tr>
+                </thead>
+                <tbody id="tableds">
+                    
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

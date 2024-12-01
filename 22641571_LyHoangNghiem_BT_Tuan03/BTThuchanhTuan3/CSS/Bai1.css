@@ -1,0 +1,100 @@
+#container {
+    background-image: linear-gradient(rgb(149, 199, 255), rgb(84, 164, 230));
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+header {
+    height: 50px;
+    border-bottom: 5px dotted white;
+}
+
+#menu {
+    width: 70%;
+    height: 70px;
+    float: left;
+}
+
+#menu ul li {
+    list-style: none;
+    text-decoration: none;
+    display: inline;
+    margin-right: 30px;
+    color: white;
+    
+    font-weight:bold;
+    font-size: large;
+}
+
+#logo {
+    float: left;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+    height: 50px;
+}
+
+#logo h1 {
+    margin-right: 20px;
+    color: white;
+    text-shadow: 2px 2px 2px blue;
+}
+
+section {
+    height: 450px;
+    width: 50%;
+    float: left;
+    color: white;
+}
+
+aside {
+    float: left;
+    width: 50%;
+}
+
+table{
+    /* padding: auto; */
+    padding-left: 50px;
+}
+
+input, textarea{
+    width: 100%;
+    border-color: blue ; 
+    border-radius: 8px;
+}
+button{
+    border-color: blue;
+    border-style: dashed ;
+    border-radius: 8px;
+}
+aside img {
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+
+aside h1 {
+    margin-left: 100px;
+    color: blue;
+    text-shadow: 2px 3px blue;
+    margin-bottom: 0;
+}
+
+aside h3 {
+    margin-top: 0;
+    margin-left: 120px;
+    color: blue;
+}
+
+footer {
+    border-top: 5px dotted white;
+    height: 80px;
+    clear: both;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight:bold;
+}

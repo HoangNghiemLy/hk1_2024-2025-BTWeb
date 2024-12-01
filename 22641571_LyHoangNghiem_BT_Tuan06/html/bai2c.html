@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5" >
+        <h3 class="">Chọn cafe</h3>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Trung Nguyên" name="cafe"/>
+          <label class="form-check-label" for="">Trung Nguyên</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Me Kong" name="cafe"/>
+          <label class="form-check-label" for="">Me kong</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="New life" name="cafe"/>
+          <label class="form-check-label" for="">New life</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ocean Blue" name="cafe"/>
+          <label class="form-check-label" for="">Ocean Blue</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Blue Space" name="cafe"/>
+          <label class="form-check-label" for="">Blue Space</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Windows" name="cafe"/>
+          <label class="form-check-label" for="">Windows</label>
+        </div>
+        <button class="btn btn-primary" id="selectedBtn" onclick="showSelectedItems()">Chọn</button>
+    
+        <p class="fs-5 mt-3">Bạn chọn cafe: <span class="text-danger" id="chon"></span></p>
+    
+      </div>
+      <script>
+        function showSelectedItems() {
+            var kiemtra = document.querySelectorAll("input[name='cafe']:checked");
+            var danhsach = Array.from(kiemtra).map(function(checkbox) {
+                return checkbox.value;
+            }).join(", ");
+
+            document.getElementById("chon").textContent = danhsach;
+        }
+    </script>
+</body>
+</html>

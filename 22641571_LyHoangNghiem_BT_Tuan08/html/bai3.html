@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            function ktrahoten(){
+                let hotenn = document.getElementById('hoten').value;
+                let reg = /^[A-Z][a-z]+([\s][A-Z][a-z]+)+$/
+                if(hotenn == '' || hotenn == null){
+                    errHo.innerHTML = 'Yêu cầu nhập họ tên';
+                    return false;
+                }else if(!hotenn.match(reg)){
+                    errHo.innerHTML = 'Họ tên không hợp lệ';
+                    return false;
+                }
+                else{
+                    errHo.innerHTML = '';
+                    return true;
+                }
+                
+            }
+            $("#hoten").blur(function(){
+                ktrahoten();
+                // if(ktrahoten()){
+                //     $("#dangky").prop("disabled", false);
+                // }else{
+                //     $("#dangky").prop("disabled", true);
+                // }
+            })
+
+    //         $("[name='gioiTinh']").on("change", function() {
+    //             var giaTri = $("[name='gioiTinh']:checked").val()
+    //             var warningMessage = "";
+
+    //             gioiTinhErr = false;
+
+    //             if (giaTri === undefined)
+    //                 warningMessage = "Vui lòng chọn giới tính";
+    //             else {
+    //                 gioiTinhErr = true;
+    //                 warningMessage = "*";
+    //             }
+
+    //             $("#gioiTinhWarning").text(warningMessage);
+    // });
+        $("[name='l']").on("change", function(){
+            var loai = $("[name='l']:checked").val();
+            if(loai === undefined){
+                $("#dangky").prop("disabled", true);
+            }else{
+                $("#dangky").prop("disabled", false);
+            }
+        })
+
+
+        $("#dangky").click(function(){
+            if(ktrahoten() && $("[name='l']:checked").val() != undefined){
+                let hoten = $("#hoten").val();
+                let lop = $("#txtLop option:selected").text();
+                let monhoc = $("#txtMon option:selected").text();
+                let loai = $("[name='l']:checked").attr("id") == "lt" ? "Lý thuyết" : "Thực hành";
+                let row = "<tr><td>"+hoten+"</td><td>"+lop+"</td><td>"+monhoc+"</td><td>"+loai+"</td></tr>";
+                $("#mytable").append(row);
+            }
+
+
+        })
+        })
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="container content">
+            <div class="row my-2">
+                <div class="col-3">
+                    <label for="">Họ tên</label>
+                    <span id="errHo" style="color: red;">*</span>
+                </div>
+                <div class="col-8">
+                    <input class="w-50" style="height: 40px;" type="text" name="" id="hoten">
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-3">
+                    <label for="">Lớp</label>
+                </div>
+                <div class="col-8">
+                    <select class="w-50" style="height: 40px;" name="lop" id="txtLop">
+                        <option value="">Đại học KTPM</option>
+                        <option value="">Đại học KHMT</option>
+                        <option value="">Đại học CNTT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-3">
+                    <label for="">Môn học</label>
+                </div>
+                <div class="col-8">
+                    <select class="w-50" style="height: 40px;" name="lop" id="txtMon">
+                        <option value="">Lập trình hướng đối tượng</option>
+                        <option value="">Hệ thống web</option>
+                        <option value="">Mạng máy tính</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-3">
+                    <label for="">Loại</label>
+                </div>
+                <div class="col-8">
+                    <input type="radio" name="l" id="lt">
+                    <label for="">Lý thuyết</label>
+                    <input type="radio" name="l" id="th">
+                    <label for="">Thực hành</label>
+                </div>
+            </div>
+        </div>
+        <button class=" btn btn-primary m-4" id="dangky" disabled >Đăng ký</button>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Lớp</th>
+                    <th>Môn học</th>
+                    <th>Loại</th>
+                </tr>
+            </thead>
+            <tbody id="mytable">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

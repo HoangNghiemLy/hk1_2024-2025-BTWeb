@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* html {
+    font-size: 62.5%;
+} */
+.header {
+  background-image: url(../img/background.png);
+}
+
+header .header {
+  display: flex;
+  align-items: center;
+}
+
+header .header h1 {
+  color: white;
+}
+
+header .header h2 {
+  color: white;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav {
+    background-color: rgb(163, 160, 155);
+    padding-left: 20px;
+}
+
+header nav a {
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #fff;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    padding: 0 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+main > section article {
+    display: flex;
+    align-items: flex-start;
+
+}
+
+main > section article:first-child {
+    margin-bottom: 30px;
+}
+main > section article .text {
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+main > section article p {
+    margin-top: 20px;   
+    line-height: 30px;
+}
+
+main > section article h3 {
+    color: red;
+}
+
+main > section {
+    width: 60%;
+}
+
+main > aside {
+    width: 40%;
+}
+
+figure {
+    border: 1px solid #333;
+    padding: 5px;
+}
+
+/* aside */
+aside {
+    border-left: 1px solid rgba(163, 160, 155, 0.2);
+    padding-left: 25px;
+}
+
+aside section:first-child h2 {
+    color: rgb(194, 32, 59);
+    font-weight: lighter;
+}
+aside section:first-child article {
+    padding: 0px 30px;
+    width: 55%;
+    margin-top: 20px;
+}
+aside section:first-child article p {
+    padding: 15px 0px;
+    border-bottom: 1px solid rgba(163, 160, 155, 0.2);
+    margin-bottom: 10px;
+    color: rgb(194, 32, 59);
+}
+
+aside section:first-child {
+    margin-bottom: 30px;
+}
+
+aside section:nth-child(2) h2{
+    color: rgb(194, 32, 59);
+    margin-bottom: 25.4px;
+}
+
+/* footer */
+footer {
+    background-color: rgb(163, 160, 155);
+    padding: 9.7px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

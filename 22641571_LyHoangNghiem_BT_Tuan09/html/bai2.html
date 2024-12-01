@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            function ktraMT(){
+                let ht = document.getElementById("txtMT").value;
+                let reg = /^[A-Z]{3}[-][A-Z]{3}[-][0-9]{2}[-][0-9]{4}$/
+
+                if(ht =="" || ht == null){
+                    errMT.innerHTML = "Mã tour không được để trống";
+                    return false;
+                }
+                else if(!reg.test(ht)){
+                    errMT.innerHTML = "Mã tour không đúng định dạng";
+                    return false;
+                }
+                else{
+                    errMT.innerHTML = "";
+                    return true;
+                }
+
+            }    
+
+
+            $("#txtMT").blur(function(){
+                ktraMT();
+            })
+            
+            function ktraNgay(){
+                let ngay = new Date($("#txtNgay").val());
+                let now =  Math.floor((ngay - new Date()) / (1000 * 60 * 60 * 24));
+                if(isNaN(ngay)){
+                    errNgay.innerHTML = "Ngày không được để trống";
+                    return false;
+                }
+                else if(now < 30){
+                    errNgay.innerHTML = "Ngày khởi hành phải lớn hơn 30 ngày so với ngày hiện tại";
+                    return false;
+                }
+                else{
+                    errNgay.innerHTML = "";
+                    return true;
+
+                    
+                }
+            }
+
+            $("#txtNgay").blur(function(){
+                ktraNgay();
+            })
+
+            function ktraGT(){
+                let gt = document.getElementById("txtGT").value;
+                if(gt =="" || gt == null){
+                    errGT.innerHTML = "Giá tour không được để trống";
+                    return false;
+                }
+                else if(isNaN(gt)){
+                    errGT.innerHTML = "Giá tour phải là số";
+                    return false;
+                }
+                else if(gt < 0){
+                    errGT.innerHTML = "Giá tour phải lớn hơn 0";
+                    return false;
+                }
+                else{
+                    errGT.innerHTML = "";
+                    return true;
+                }
+            }
+
+            $("#txtGT").blur(function(){
+                ktraGT();
+            })
+
+            function ktraanh(){
+                let anh = document.getElementById("txtDD").value;
+                if(anh =="" || anh == null){
+                    errDD.innerHTML = "Ảnh đại diện không được để trống";
+                    return false;
+                }
+                else{
+                    errDD.innerHTML = "";
+                    return true;
+                }
+            }
+
+            $("#txtDD").blur(function(){
+                ktraanh();
+            })
+            let i = 1;
+            $("#txtluu").click(function(){
+                if(ktraMT() && ktraNgay() && ktraGT() && ktraanh()){
+                    let mt = $("#txtMT").val();
+                    let ht = $("#txtHT").val();
+                    let ngay = $("#txtNgay").val();
+                    let tg = $("#txtTG").val();
+                    let gt = $("#txtGT").val();
+                    let dd = $("#txtDD").prop("files")[0].name;
+
+                    let row = "<tr><td>" + (i++) +"</td><td>"+mt+"</td><td>"+ht+"</td><td>"+ngay+"</td><td>"+tg+"</td><td>"+gt+"</td><td><img src='"+dd+"' width='100px' alt=''></td></tr>";
+                    $("#dstable tbody").append(row);
+                }
+            })
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+  <div class="container">
+    <div class="container">
+        <img src="../image/banner-5.png" width="100%" alt="">
+    </div>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container">
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-primary" href="#" aria-current="page">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" href="#" data-bs-toggle="modal" data-bs-target="#modalId">
+                Đăng ký
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+      aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">
+              THÔNG TIN HỌC VIÊN
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-borderless">
+                <tr>
+                  <td><label for="txtMT" class="form-label">Mã tour:</label></td>
+                  <td><input type="text" id="txtMT" class="form-control">
+                    <span id="errMT" style="color: red;">*</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="txtHT" class="form-label">Hành trình:</label></td>
+                  <td><input type="text" id="txtHT" class="form-control">
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="txtNgay" class="form-label">Ngày khởi hành:</label></td>
+                  <td><input type="date" id="txtNgay" class="form-control">
+                    <span id="errNgay" style="color: red;">*</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="txtTG" class="form-label">Thời gian:</label></td>
+                  <td><input type="text" id="txtTG" class="form-control">
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="txtGT" class="form-label">Giá tour:</label></td>
+                  <td><input type="text" id="txtGT" class="form-control">
+                    <span id="errGT" style="color: red;">*</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="txtDD" class="form-label">Ảnh đại diện:</label></td>
+                  <td><input type="file" id="txtDD" class="form-control" accept=".jpg, .gif, .png">
+                    <span id="errDD" style="color: red;">*</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success w-100" id="txtluu">
+              Lưu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table" id="dstable">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã tour</th>
+            <th>Hành trình</th>
+            <th>Ngày khởi hành</th>
+            <th>Thời gian</th>
+            <th>Giá tour</th>
+            <th>Ảnh đại diện</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+</body>
+</html>
